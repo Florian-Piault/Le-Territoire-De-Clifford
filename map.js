@@ -61,7 +61,7 @@ function displayMap(lat, lng){
 
 function getTrees(lat, lng) { 
   return new Promise( function(resolve, reject){
-      fetch('https://opendata.paris.fr/api/records/1.0/search/?dataset=les-arbres&q=&rows=5000&facet=typeemplacement&facet=domanialite&facet=arrondissement&facet=libellefrancais&facet=genre&facet=espece&facet=varieteoucultivar&facet=circonferenceencm&facet=hauteurenm&facet=stadedeveloppement&facet=remarquable&geofilter.distance=48.8838%2C+2.2724%2C+1000')
+      fetch('https://opendata.paris.fr/api/records/1.0/search/?dataset=les-arbres&q=&rows=5000&facet=typeemplacement&facet=domanialite&facet=arrondissement&facet=libellefrancais&facet=genre&facet=espece&facet=varieteoucultivar&facet=circonferenceencm&facet=hauteurenm&facet=stadedeveloppement&facet=remarquable&geofilter.distance='+ lat +'%2C+'+ lng +'%2C+1000')
       .then( function( rawData ){
           // Tester la requête
           if( rawData.ok === true ){
