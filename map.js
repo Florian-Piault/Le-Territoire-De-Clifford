@@ -20,4 +20,17 @@ var map = L.map("mapid", {
 }
 
 
+  /**
+   * find tree data from Paris
+   * */
 
+$.ajax({
+    type: "GET",
+    url: "https://opendata.paris.fr/api/records/1.0/search/?dataset=les-arbres&q=&facet=typeemplacement&facet=domanialite&facet=arrondissement&facet=libellefrancais&facet=genre&facet=espece&facet=varieteoucultivar&facet=circonferenceencm&facet=hauteurenm&facet=stadedeveloppement&facet=remarquable",
+    success: function(data) {
+        console.log(data);
+    },
+    error: function() {
+        console.log('Error occured');
+    }
+});
