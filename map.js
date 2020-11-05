@@ -1,6 +1,6 @@
 var map = L.map("mapid", {
     preferCanvas: true,
-  }).setView([48.866667, 2.333333], 13);
+  }).locate({setView: true, maxZoom: 70});
   
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
@@ -14,7 +14,6 @@ var map = L.map("mapid", {
         console.log(position.coords.longitude)
         var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
         marker.bindPopup("Vous etes ici.").openPopup();
-        map.locate({setView: true, maxZoom: 70});    
     });
 } else {
     console.log('Geolocation non disponible')
