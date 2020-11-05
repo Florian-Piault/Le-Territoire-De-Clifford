@@ -11,11 +11,13 @@ var map = L.map("mapid", {
     console.log('Geolocation disponible')
     navigator.geolocation.getCurrentPosition(position => {
         console.log(position.coords.latitude) 
-    console.log(position.coords.longitude)
+        console.log(position.coords.longitude)
+        var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+        marker.bindPopup("Vous etes ici.").openPopup();
     });
 } else {
     console.log('Geolocation non disponible')
 }
 
-var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap);
+
 

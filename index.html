@@ -28,16 +28,5 @@
     </footer>
     
 </body>
-<script>
-    if ( 'geolocation' in navigator) {
-        console.log('Geolocation disponible')
-        navigator.geolocation.getCurrentPosition(position => {
-            console.log(position.coords.latitude) 
-        console.log(position.coords.longitude)
-        });
-    } else {
-        console.log('Geolocation non disponible')
-    }
-</script>
 <script src="./map.js"></script>
 </html>
