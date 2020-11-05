@@ -22,13 +22,11 @@ var map = L.map("mapid", {
             opacity: 1,
             fillOpacity: 0.8,
           };
-
-          console.log(arbres);
           var arbres_lyr = L.geoJSON(arbres, {
 
             pointToLayer: function (feature, latlng) {
             
-            return L.marker(latlng);
+            return L.circleMarker(latlng, geojsonMarkerOptions);
             
             }}).addTo(map);
     });
