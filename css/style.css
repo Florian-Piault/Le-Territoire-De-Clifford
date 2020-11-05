@@ -1,0 +1,55 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-style: normal;
+	list-style: none;
+	-wekbkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font: 1.6rem sans-serif;
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+{
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  font-style: normal;
+  font-weight: 100%;
+}
+a,
+abbr {
+  text-decoration: none;
+}
+
+/** THEME **/
+:root {
+  --text-color-heading: #fff;
+  --default-color: #34495e;
+  --primary-color:  #34495e;
+}
+
+header {
+  line-height: 6rem;
+  background-color: var(--default-color);
+  color: var(--text-color-heading);
+}
+
+main div {
+  max-width: 80rem;
+  margin: 2rem auto;
+  padding: 1rem;
+  line-height: 2.6rem;
+}
