@@ -42,9 +42,15 @@ abbr {
 }
 
 header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   line-height: 6rem;
   background-color: var(--default-color);
   color: var(--text-color-heading);
+}
+header img {
+  width: 4%;
 }
 
 footer {
@@ -60,6 +66,11 @@ footer {
 
 #mapid {
   margin: 0;
-  height: 88vh;
+  height: 86vh;
   width: 100%;
+}
+
+h1,
+h3 {
+  margin: 1rem;
 }
