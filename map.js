@@ -13,7 +13,7 @@ if ("geolocation" in navigator) {
       // Ajouter un marker
       var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(myMap);
 
-      getTrees(position.coords.latitude, position.coords.longitude)
+      getTrees(position.coords.latitude, position.coords.longitude,5000)
       .then( function(data){
         console.log(data.records);
 
@@ -59,9 +59,9 @@ function displayMap(lat, lng){
 
 ///
 
-function getTrees(lat, lng) { 
+function getTrees(lat, lng,nmb) { 
   return new Promise( function(resolve, reject){
-      fetch('https://opendata.paris.fr/api/records/1.0/search/?dataset=les-arbres&q=&rows=5000&facet=typeemplacement&facet=domanialite&facet=arrondissement&facet=libellefrancais&facet=genre&facet=espece&facet=varieteoucultivar&facet=circonferenceencm&facet=hauteurenm&facet=stadedeveloppement&facet=remarquable&geofilter.distance='+ lat +'%2C+'+ lng +'%2C+1000')
+      fetch('https://opendata.paris.fr/api/records/1.0/search/?dataset=les-arbres&q=&rows='+nmb+'&facet=typeemplacement&facet=domanialite&facet=arrondissement&facet=libellefrancais&facet=genre&facet=espece&facet=varieteoucultivar&facet=circonferenceencm&facet=hauteurenm&facet=stadedeveloppement&facet=remarquable&geofilter.distance='+ lat +'%2C+'+ lng +'%2C+1000')
       .then( function( rawData ){
           // Tester la requête
           if( rawData.ok === true ){
