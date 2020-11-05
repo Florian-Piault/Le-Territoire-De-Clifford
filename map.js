@@ -1,6 +1,6 @@
 if ("geolocation" in navigator) {
   // La géolocalisation est disponible
-  console.log('OK geolocation');
+  console.log('Geolocation disponible');
 
   navigator.geolocation.getCurrentPosition( function( position ) {
       // Connaître la position du navigateur
@@ -13,6 +13,7 @@ if ("geolocation" in navigator) {
       // Ajouter un marker
       var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(myMap);
 
+      // Recuperer les 5000 abres dans un rayon de 10km
       getTrees(position.coords.latitude, position.coords.longitude,5000)
       .then( function(data){
         console.log(data.records);
@@ -29,15 +30,15 @@ if ("geolocation" in navigator) {
 } 
 else {
   // La géolocalisation n'est pas disponible
-  console.log('NOT geolocation');
+  console.log('Geolocation non disponible');
 };
 
 
-///
 function getgeoNavigation(){
   return "geolocation" in navigator;
 }
 
+// retourne la position de l'utilisateur
 function getUserPosition(){
   return new Promise( function(resolve, reject){
       navigator.geolocation.getCurrentPosition( function( position ) {
@@ -47,8 +48,8 @@ function getUserPosition(){
   })
 }
 
+// Afficher la carte
 function displayMap(lat, lng){
-  // Afficher la carte
   var myMap = L.map('myMap').setView([lat, lng], 20);
   L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png').addTo(myMap);
 
@@ -57,8 +58,7 @@ function displayMap(lat, lng){
 }
 
 
-///
-
+// Recuperer tous les arbres dans un rayon de 10km 
 function getTrees(lat, lng,nmb) { 
   return new Promise( function(resolve, reject){
       fetch('https://opendata.paris.fr/api/records/1.0/search/?dataset=les-arbres&q=&rows='+nmb+'&facet=typeemplacement&facet=domanialite&facet=arrondissement&facet=libellefrancais&facet=genre&facet=espece&facet=varieteoucultivar&facet=circonferenceencm&facet=hauteurenm&facet=stadedeveloppement&facet=remarquable&geofilter.distance='+ lat +'%2C+'+ lng +'%2C+1000')
