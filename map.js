@@ -2,18 +2,35 @@ var map = L.map("mapid", {
     preferCanvas: true,
   }).locate({setView: true, maxZoom: 70});
   
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright%22%3EOpenStreetMap</a> contributors',
-  }).addTo(map);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
   if ( 'geolocation' in navigator) {
     console.log('Geolocation disponible')
     navigator.geolocation.getCurrentPosition(position => {
+        
         console.log(position.coords.latitude) 
         console.log(position.coords.longitude)
+
         var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
         marker.bindPopup("Vous etes ici.").openPopup();
+
+        var geojsonMarkerOptions = {
+            radius: 4,
+            fillColor: "#ff7800",
+            color: "#000",
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8,
+          };
+
+          console.log(arbres);
+          var arbres_lyr = L.geoJSON(arbres, {
+
+            pointToLayer: function (feature, latlng) {
+            
+            return L.marker(latlng);
+            
+            }}).addTo(map);
     });
 } else {
     console.log('Geolocation non disponible')
