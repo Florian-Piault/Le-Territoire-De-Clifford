@@ -64,7 +64,7 @@ footer {
   right: 0;
 }
 
-#mapid {
+#myMap {
   margin: 0;
   height: 86vh;
   width: 100%;
@@ -73,4 +73,9 @@ footer {
 h1,
 h3 {
   margin: 1rem;
+}
+
+.my-div-icon {
+  background-color: green;
+  border-radius: 50%;
 }
